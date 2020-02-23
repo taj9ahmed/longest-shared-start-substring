@@ -11,12 +11,13 @@
     
     <script type="text/javascript" charset="utf-8">
     
-    var str =['SQLInjection', 'SQLTutorial'] ;//[ "glamani",'goooal','google', "glamourya",  "go"]
-    
-    function longest_shared_substring ( str ) {
+    var str  = ['go', 'google'];////
+    var str2 = [ "glamani", "glamourya", "go","goooal","google",  ];//"aaaaa", "aaaaaa",
+    var str3 = ['SQLInjection', 'SQLTutorial'] ;
+    function longest_shared_substring ( text ) {
       
       let result = [];
-      let data = str.map( x => x);
+      let data = text.map( x => x);
       
       //order strings by kength ascending!
       data.sort( ( a, b ) => a.length > b.length ? 1 : -1);
@@ -27,22 +28,23 @@
         // console.log(el);
         
         for (let j = 0; j < data.length; j++ ) {
-          if ( i !== j ) {
-            if( el === data[j].substring( 0, el.length ) ) {
-              result.push( data[j] );
-              console.log( data[j] );
-            }
+          for ( let k = 0; k < data[j].length; k++ ) {
+              if ( i !== j )
+              if( data[i].substring( 0, k ) === data[j].substring( 0, k ) ) {
+                result.push( data[j].substring( 0, k )  );//data[j]
+                // console.log( data[j] );
+              }
           }
         }
-        
       }
-      // console.log( data );
-      return( result );
+      result.sort( ( a, b) => a.length < b.length ? 1 : -1)
+      // console.log( result );
+      return( result[0]);
     }
-    
-    
-    console.log( longest_shared_substring( str ) );
-    // console.log(str);  
+    console.log( longest_shared_substring( str  ) );
+    console.log( longest_shared_substring( str2 ) );
+    console.log( longest_shared_substring( str3 ) );
+  
     </script>
   </body>
 
