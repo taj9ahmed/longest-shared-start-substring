@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+
+  <body>
+    <h1>longest shared substring</h1>
+    
+    <script type="text/javascript" charset="utf-8">
+    
+    var str =['SQLInjection', 'SQLTutorial'] ;//[ "glamani",'goooal','google', "glamourya",  "go"]
+    
+    function longest_shared_substring ( str ) {
+      
+      let result = [];
+      let data = str.map( x => x);
+      
+      //order strings by kength ascending!
+      data.sort( ( a, b ) => a.length > b.length ? 1 : -1);
+      
+      for ( let i = 0; i < data.length; i++ ) {
+        // compare with slice() giuded by el.length
+        let el = data[i];
+        // console.log(el);
+        
+        for (let j = 0; j < data.length; j++ ) {
+          if ( i !== j ) {
+            if( el === data[j].substring( 0, el.length ) ) {
+              result.push( data[j] );
+              console.log( data[j] );
+            }
+          }
+        }
+        
+      }
+      // console.log( data );
+      return( result );
+    }
+    
+    
+    console.log( longest_shared_substring( str ) );
+    // console.log(str);  
+    </script>
+  </body>
+
+</html>
